@@ -1,2 +1,1 @@
-armsd
-=====
+ARMS service daemon for Unix.

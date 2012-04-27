@@ -1,0 +1,6 @@
+*.o
+Makefile
+armsd
+config.log
+config.status
+private/js/quadwheel
