@@ -1,7 +1,7 @@
 Source: armsd
 Section: admin
 Priority: extra
-Maintainer: Kouki Ooyatsu <kouki-o@iij.ad.jp>
+Maintainer: Kouki Ooyatsu <kouki-o at iij.ad.jp>
 Build-Depends: make, gcc, libarms-dev (>= 5.00), debhelper, cdbs, autotools-dev
 Homepage: http://dev.smf.jp/
 
