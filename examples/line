@@ -32,7 +32,7 @@ fi
 
 case $action in
 "connect")
-    echo line connedted
+    echo line connected
     exit $CONNECTED
     ;;
 "disconnect")
