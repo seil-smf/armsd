@@ -33,7 +33,7 @@ install:
 	install -c -s armsd $(DESTDIR)${sbindir}
 	install -d $(DESTDIR)${sysconfdir}/armsd
 	install -d $(DESTDIR)${sysconfdir}/armsd/scripts
-	install -c armsd.conf $(DESTDIR)${sysconfdir}/armsd/armsd.conf
+	install -c -m 644 armsd.conf $(DESTDIR)${sysconfdir}/armsd/armsd.conf
 	install -d $(DESTDIR)${cachedir}
 	install -d $(DESTDIR)${exampledir}
 	install -c examples/* $(DESTDIR)${exampledir}
