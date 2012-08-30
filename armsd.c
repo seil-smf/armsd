@@ -117,12 +117,14 @@ struct dconf {
 	{ "hb-traffic-if0",	"eth0", NULL  },
 	{ "hb-traffic-if1",	"eth1", NULL  },
 	{ "hb-traffic-if2",	"eth2", NULL  },
+	{ "https-proxy-url",	NULL, NULL },
+	{ "https-proxy-url-ls",	NULL, NULL },
+	{ "https-proxy-url-rs",	NULL, NULL },
 	{ "ls-sa-key",		"", NULL  },
 	{ "path-iconfig",	NULL, NULL  },
 	{ "path-root-ca",	NULL, NULL  },
 	{ "path-pid",		PATHPIDFILE, NULL  },
 	{ "path-state-cache",	NULL, NULL  },
-	{ "https-proxy-url",	NULL, NULL },
 	{ "script-clear",	NULL, NULL  },
 	{ "script-command",	NULL, NULL  },
 	{ "script-debug",	NULL, NULL  },
@@ -237,6 +239,7 @@ static int callback_ping(const arms_ping_arg_t *, char *, size_t, int *,
 			 void *);
 static int callback_read_config(uint32_t, int, char *, size_t, int *, void *);
 static int callback_state(int, int, void *);
+static void callback_state_set_proxy(const char *);
 static int callback_traceroute(const arms_traceroute_arg_t *, char *, size_t,
 			       int *, void *);
 
@@ -1700,7 +1703,32 @@ callback_state(int old, int new, void *u)
 		(void)script_exec(argv, timeout);
 	}
 
+	if (new == ARMS_ST_LSPULL)
+		callback_state_set_proxy("https-proxy-url-ls");
+	else if (new == ARMS_ST_RSPULL)
+		callback_state_set_proxy("https-proxy-url-rs");
+
 	return 0;
+}
+
+static void
+callback_state_set_proxy(const char *var)
+{
+	const char *proxy;
+
+	proxy = dconf_get_string(var);
+	if (proxy == NULL)
+		proxy = dconf_get_string("https-proxy-url");
+	if (proxy == NULL)
+		return;
+
+	if (proxy[0] == '\0') {
+		logit(LOG_INFO, "use no https proxy");
+		arms_set_https_proxy(arms_context, NULL);
+	} else {
+		logit(LOG_INFO, "use https proxy: %s", proxy);
+		arms_set_https_proxy(arms_context, proxy);
+	}
 }
 
 static int
