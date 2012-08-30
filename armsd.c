@@ -2175,7 +2175,7 @@ load_initial_config(arms_context_t *ctx)
 	}
 
 	err = arms_load_config(ctx, config, len);
-	if (err < 0) {
+	if (err != 0) {
 		fprintf(stderr, "cannot load config %s\n", filename);
 		free(config);
 		return -1;
