@@ -1,6 +1,6 @@
-%define version 0.7.0
+%define version 0.8.0
 
-Summary: Mass-production type ARMS Daemon
+Summary: ARMS Protocol Daemon
 Name: armsd
 Version: %{version}
 Release: 0
@@ -46,6 +46,9 @@ rm -f /var/cache/armsd/*
 
 
 %changelog
+* Wed Aug 29 2012 Tomoyuki Sahara <tsahara@iij.ad.jp> 0.8.0-0
+- "https-proxy-url-ls" and "https-proxy-url-rs"
+
 * Mon Apr 9 2012 Tomoyuki Sahara <tsahara@iij.ad.jp> 0.7.0-0
 - add "hb-disk-usage" configuration parameter
 - install armsd to /usr/sbin

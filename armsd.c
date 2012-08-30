@@ -69,7 +69,7 @@ const char *opt_distid = NULL;
 const char *opt_logfile = NULL;
 
 const char armsd_progname[] = "armsd";
-const char armsd_version[] = "0.7.0";
+const char armsd_version[] = "0.8.0";
 
 const char arms_root_ca_certificate[] =
 "-----BEGIN CERTIFICATE-----\n"
