@@ -1,7 +1,7 @@
 #!/bin/sh
 
 pkg=armsd
-repo=git://giti.tokyo.iiji.jp/arms/armsd.git
+repo=git://github.com/seil-smf/armsd.git
 
 ORIGPWD=`pwd`
 TMPDIR=`mktemp -d`

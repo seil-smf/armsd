@@ -1,6 +1,6 @@
 #!/bin/sh
 
-REPO=git://giti.tokyo.iiji.jp/arms/armsd.git
+REPO=git://github.com/seil-smf/armsd.git
 
 set -e
 set -x
